@@ -1,0 +1,21 @@
+<div class="container mt-4">
+  <input class="form-control mb-3" [(ngModel)]="filterText" placeholder="Buscar raza..." />
+  <button class="btn btn-primary mb-3" (click)="filter()">Buscar</button>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Origen</th>
+        <th>Temperamento</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let breed of filteredBreeds">
+        <td>{{ breed.name }}</td>
+        <td>{{ breed.origin }}</td>
+        <td>{{ breed.temperament }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

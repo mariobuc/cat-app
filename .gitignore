@@ -1,0 +1,61 @@
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+
+
+# Build output
+dist/
+build/
+.tmp/
+temp/
+
+# Angular
+.angular/
+out-tsc/
+coverage/
+karma-results/
+test-results/
+
+# Angular Material / Styles
+styles.css
+styles.scss
+
+# IDEs y entornos de desarrollo
+.vscode/
+.idea/
+*.swp
+*.swo
+*.log
+
+# Docker
+*.local
+docker-compose.override.yml
+
+# NGINX (si generas archivos dentro del contenedor)
+nginx/logs/
+nginx/temp/
+
+# MongoDB (si tienes carpetas de volúmenes locales para pruebas)
+mongo-data/
+mongodb/
+
+# Logs y archivos temporales
+*.log
+*.tmp
+
+# MacOS / Windows
+.DS_Store
+Thumbs.db
+
+# Jest / Angular Testing
+jest-cache/
+jest-output/
+.jest/
+coverage/
+lcov-report/
+
+# Git
+.git/
