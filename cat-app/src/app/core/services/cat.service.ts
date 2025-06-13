@@ -9,7 +9,7 @@ export class CatService {
   constructor(private http: HttpClient) {}
 
   getBreeds(): Observable<any> {
-    return this.http.get(`${this.API_URL}/breeds`);
+    return this.http.get(`${this.API_URL}/cats/breeds`);
   }
 
   getImagesByBreed(breedId: string): Observable<any> {
