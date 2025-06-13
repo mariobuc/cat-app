@@ -13,6 +13,9 @@ RUN npm install
 # Copia el resto del código
 COPY . .
 
+# Compilar TypeScript a JavaScript -  Generar dist/main.js 
+RUN npm run build      
+
 # Expone el puerto
 EXPOSE 3000
 
