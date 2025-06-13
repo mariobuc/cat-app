@@ -1,5 +1,3 @@
-// src/app/features/breeds/components/breed-table/breed-table.component.ts
-
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({

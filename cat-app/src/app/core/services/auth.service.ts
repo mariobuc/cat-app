@@ -1,27 +1,26 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ApiService } from './api.service';
-import { JwtHelperService } from '@auth0/angular-jwt';
-
-
+import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  constructor(private api: ApiService, private jwtHelper: JwtHelperService) {}
+  private API_URL = 'http://localhost:3000/api/auth';
 
-  login(username: string, password: string) {
-    return this.api.get<any>(`/users/login?username=${username}&password=${password}`);
+  constructor(private http: HttpClient) {}
+
+  login(credentials: { email: string; password: string }): Observable<any> {
+    return this.http.post(`${this.API_URL}/login`, credentials);
   }
 
-  register(data: any) {
-    return this.api.post('/users/register', data);
+  register(data: { email: string; password: string }): Observable<any> {
+    return this.http.post(`${this.API_URL}/register`, data);
   }
 
-  isAuthenticated(): boolean {
-    const token = localStorage.getItem('token');
-    return token != null && !this.jwtHelper.isTokenExpired(token);
-  }
-
-  logout() {
+  logout(): void {
     localStorage.removeItem('token');
+  }
+
+  isLoggedIn(): boolean {
+    return !!localStorage.getItem('token');
   }
 }

@@ -10,11 +10,6 @@ dotenv.config();
 const app = express();
 app.use(express.json());
 
-// Rutas
-app.use('/api', catRouter);
-app.use('/api', imageRouter);
-app.use('/api', userRouter);
-
 // Conexión a Mongo
 mongoose.connect(process.env.MONGO_URI || '')
   .then(() => console.log('MongoDB connected'))

@@ -1,27 +1,24 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { AuthService } from 'src/app/core/services/auth.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html'
 })
 export class LoginComponent {
-  username = '';
-  password = '';
-  error = '';
+  loginForm: FormGroup;
 
-  constructor(private auth: AuthService, private router: Router) {}
-
-  login() {
-    this.auth.login(this.username, this.password).subscribe({
-      next: (res) => {
-        localStorage.setItem('token', res.token);
-        this.router.navigate(['/profile']);
-      },
-      error: () => {
-        this.error = 'Usuario o contraseña incorrectos';
-      }
+  constructor(private fb: FormBuilder) {
+    this.loginForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required]
     });
+  }
+
+  onSubmit() {
+    if (this.loginForm.valid) {
+      const { email, password } = this.loginForm.value;
+      console.log('Logging in with:', email, password);
+    }
   }
 }

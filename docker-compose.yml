@@ -21,6 +21,7 @@ services:
       - MONGO_URI=mongodb://mongo:27017/catapp
     volumes:
       - ./cat-app-backend:/usr/src/app
+    working_dir: /usr/src/app
     command: npm run start:prod
 
   frontend:
@@ -28,7 +29,7 @@ services:
       context: ./cat-app
     container_name: cat-frontend
     ports:
-      - "80:80"
+      - "4200:80"  # O "80:80" si quieres exponer directamente
     depends_on:
       - backend
 

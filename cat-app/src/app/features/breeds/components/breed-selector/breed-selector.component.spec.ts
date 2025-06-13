@@ -18,7 +18,7 @@ providers: [
     useValue: {
       snapshot: {
         paramMap: {
-          get: () => 'beng', // o el id que se espera
+          get: () => 'beng', 
         }
       }
     }

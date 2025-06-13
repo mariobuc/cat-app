@@ -1,14 +1,11 @@
-<div class="container mt-3">
-  <h2>Select a Cat Breed</h2>
-
-  <select
-    id="breedSelect"
-    class="form-control"
-    [(ngModel)]="selectedBreedId"
-    (change)="onSelect()"
-  >
-    <option *ngFor="let breed of breeds" [value]="breed.id">{{ breed.name }}</option>
-  </select>
-
-  <app-breed-detail [breedId]="selectedBreedId"></app-breed-detail>
-</div>
+<mat-card>
+  <mat-card-title>Selecciona una Raza</mat-card-title>
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Raza</mat-label>
+    <mat-select [(value)]="selectedBreed" (selectionChange)="onBreedSelected()">
+      <mat-option *ngFor="let breed of breeds" [value]="breed.id">
+        {{ breed.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</mat-card>

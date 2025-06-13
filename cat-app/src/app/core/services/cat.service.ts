@@ -1,41 +1,18 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-export interface Breed {
-  id: string;
-  name: string;
-  description?: string;
-  temperament?: string;
-  origin?: string;
-  image?: {
-    url: string;
-  };
-}
-
-export interface CatImage {
-  id: string;
-  url: string;
-  breeds: Breed[];
-}
-
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable({ providedIn: 'root' })
 export class CatService {
-  private apiUrl = 'https://api.thecatapi.com/v1';
+  private API_URL = 'http://localhost:3000/api/cats';
 
   constructor(private http: HttpClient) {}
 
-  getBreeds(): Observable<Breed[]> {
-    return this.http.get<Breed[]>(`${this.apiUrl}/breeds`);
+  getBreeds(): Observable<any> {
+    return this.http.get(`${this.API_URL}/breeds`);
   }
 
-  getBreedById(id: string): Observable<Breed> {
-    return this.http.get<Breed>(`${this.apiUrl}/breeds/${id}`);
-  }
-
-  getImagesByBreedId(id: string): Observable<CatImage[]> {
-    return this.http.get<CatImage[]>(`${this.apiUrl}/images/search?breed_id=${id}&limit=5`);
+  getImagesByBreed(breedId: string): Observable<any> {
+    return this.http.get(`${this.API_URL}/images/${breedId}`);
   }
 }
