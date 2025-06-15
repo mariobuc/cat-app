@@ -1,16 +1,16 @@
 <mat-card *ngIf="breed">
   <mat-card-title>{{ breed.name }}</mat-card-title>
   <mat-card-content>
-    <p>{{ breed.description }}</p>
     <p><strong>Origen:</strong> {{ breed.origin }}</p>
+    <p><strong>Descripción:</strong> {{ breed.description }}</p>
     <p><strong>Temperamento:</strong> {{ breed.temperament }}</p>
+    <p><strong>Esperanza de vida:</strong> {{ breed.life_span }} años</p>
   </mat-card-content>
 </mat-card>
 
-<div class="image-gallery" *ngIf="images.length">
-  <mat-grid-list cols="3" rowHeight="200px" gutterSize="10px">
-    <mat-grid-tile *ngFor="let img of images">
-      <img [src]="img.url" alt="Cat image" class="breed-image" />
-    </mat-grid-tile>
-  </mat-grid-list>
-</div>
+<!-- Carrusel de imágenes usando ng-bootstrap -->
+<ngb-carousel *ngIf="images && images.length">
+  <ng-template ngbSlide *ngFor="let img of images">
+    <img [src]="img.url" alt="Imagen de {{ breed.name }}" class="d-block w-100" style="max-height: 500px; object-fit: cover;" />
+  </ng-template>
+</ngb-carousel>

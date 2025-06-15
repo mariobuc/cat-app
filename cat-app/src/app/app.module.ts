@@ -4,45 +4,36 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+
+//import { RegisterComponent } from './features/auth/register/register.component';
+import { BreedsModule } from './features/breeds/breeds.module';
+import { AuthModule } from './features/auth/auth.module';
 import { AppComponent } from './app.component';
-
-import { LoginComponent } from './features/auth/login/login.component';
-import { RegisterComponent } from './features/auth/register/register.component';
-import { BreedSelectorComponent } from './features/breeds/components/breed-selector/breed-selector.component';
-import { BreedDetailComponent } from './features/breeds/components/breed-detail/breed-detail.component';
-
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatCardModule } from '@angular/material/card';
-import { MatSelectModule } from '@angular/material/select';
-import { MatGridListModule } from '@angular/material/grid-list';
-import { FormsModule } from '@angular/forms';
-import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { ReactiveFormsModule } from '@angular/forms';
-
 
 @NgModule({
   declarations: [
-    AppComponent,
-    LoginComponent,
-    RegisterComponent,
-    BreedSelectorComponent,
-    BreedDetailComponent
+    //RegisterComponent,
+    BreedsModule,
+    AuthModule,
+    AppComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    NgModule,
     FormsModule,
-    MatToolbarModule,
-    MatCardModule,
-    MatSelectModule,
-    MatGridListModule,
     ReactiveFormsModule,
+    BreedsModule,
+    AppComponent
+
   ],
-  providers: [
-    provideAnimationsAsync()
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
+

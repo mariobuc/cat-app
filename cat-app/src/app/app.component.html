@@ -1,11 +1,4 @@
-<mat-toolbar color="primary">
-  <span class="app-title">Cat App</span>
-  <span class="spacer"></span>
-  <a mat-button routerLink="/breeds" routerLinkActive="active-link">Razas</a>
-  <a mat-button routerLink="/login" routerLinkActive="active-link">Iniciar Sesión</a>
-  <a mat-button routerLink="/register" routerLinkActive="active-link">Registrarse</a>
-</mat-toolbar>
-
-<div class="app-container">
-  <router-outlet></router-outlet>
+<div class="container mt-4">
+  <app-breed-selector (breedSelected)="onBreedSelected($event)"></app-breed-selector>
+  <app-breed-detail [breedId]="selectedBreedId"></app-breed-detail>
 </div>

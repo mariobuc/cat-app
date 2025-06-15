@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, NgModule, OnInit, Output } from '@angular/core';
 import { CatService } from '../../../../core/services/cat.service';
+
+
+
 
 @Component({
   selector: 'app-breed-selector',
@@ -10,15 +13,21 @@ export class BreedSelectorComponent implements OnInit {
   breeds: any[] = [];
   selectedBreed: string = '';
 
+  @Output() breedSelected = new EventEmitter<string>();
+
   constructor(private catService: CatService) {}
 
   ngOnInit(): void {
-    this.catService.getBreeds().subscribe((data: any[]) => {
-      this.breeds = data;
+    this.catService.getBreeds().subscribe({
+      next: (data) => this.breeds = data,
+      error: (err) => console.error('Error al cargar razas', err)
     });
   }
 
-  onBreedSelected() {
-    
+
+  onBreedSelected(): void {
+    this.breedSelected.emit(this.selectedBreed);
   }
+
 }
+

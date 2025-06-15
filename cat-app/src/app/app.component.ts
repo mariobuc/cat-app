@@ -8,7 +8,19 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  constructor(public authService: AuthService, private router: Router) {}
+
+  selectedBreedId: string | null = null;
+
+
+  onBreedSelected(breedId: string): void {
+    this.selectedBreedId = breedId;
+  }
+
+  constructor(public authService: AuthService, private router: Router) {
+
+    console.log('AppComponent cargado');
+
+  }
 
   logout() {
     this.authService.logout();
