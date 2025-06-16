@@ -7,7 +7,7 @@ import { CatService } from 'src/app/core/services/cat.service';
 })
 export class BreedDetailComponent implements OnChanges {
   
-  @Input() breedId: string = '';
+  @Input() breedId: string | null = null;
   breed: any;
   images: any[] = [];
 
